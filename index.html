@@ -1228,16 +1228,17 @@
     
     /* ═══ ELEMENTO SUPERPUESTO (ERROR INTENCIONAL) ═══════ */
     .overlap-error {
-      position: absolute;
-      top: -80px;
-      right: 10%;
+      position: fixed;
+      top: 150px;
+      right: 50px;
       width: 280px;
-      background: var(--color-accent);
+      background: #E8A23C;
       padding: 1.5rem;
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow-lg);
-      z-index: 50;
+      border-radius: 20px;
+      box-shadow: 0 12px 40px rgba(45,74,122,0.16);
+      z-index: 9999;
       transform: rotate(-3deg);
+      border: 3px solid red;
     }
     
     .overlap-error h4 {
