@@ -348,21 +348,36 @@
       font-size: 1rem;
     }
 
+    /* ⚠️ ERROR INTENCIONAL: Colores demasiado bullosos/saturados en el título */
     .hero-title {
       font-family: var(--font-display);
       font-size: clamp(2.25rem, 6vw, 3.75rem);
       font-weight: 700;
       line-height: 1.1;
       letter-spacing: -0.03em;
-      color: grey;
+      /* Colores saturados y chillones - ERROR DE DISEÑO */
+      background: linear-gradient(45deg, #FF00FF, #00FFFF, #FFFF00, #FF00FF);
+      background-size: 300% 300%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: gradientShift 3s ease infinite;
       margin-bottom: 1.25rem;
+      text-shadow: 3px 3px 0px #FF1493, 6px 6px 0px #00CED1;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
     .hero-title em {
       font-style: normal;
-      color: var(--color-primary);
+      color: #FF1493;
       position: relative;
       display: inline-block;
+      -webkit-text-fill-color: #FF1493;
     }
 
     .hero-title em::after {
@@ -372,8 +387,8 @@
       bottom: 2px;
       width: 100%;
       height: 6px;
-      background: var(--color-accent);
-      opacity: 0.35;
+      background: #00FFFF;
+      opacity: 0.6;
       border-radius: 3px;
       z-index: -1;
     }
@@ -427,6 +442,23 @@
       width: 100%;
       max-width: 480px;
       animation: float 6s ease-in-out infinite;
+    }
+
+    /* ⚠️ ERROR INTENCIONAL: Ilustración sobrepuesta al texto */
+    @media (min-width: 1024px) {
+      .hero-visual {
+        position: absolute;
+        right: 10%;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 10;
+        opacity: 0.85;
+      }
+      
+      .hero-content {
+        position: relative;
+        z-index: 5;
+      }
     }
 
     /* ─── FEATURES ──────────────────────────────────────── */
@@ -519,10 +551,6 @@
     .how-header {
       text-align: center;
       margin-bottom: 3.5rem;
-    }
-
-    .how-header .section-label {
-      justify-content: center;
     }
 
     .steps-grid {
@@ -907,7 +935,7 @@
       line-height: 1.75;
     }
 
-    /* ─── CONTACT ───────────────────────────────────────── */
+    /* ─── CONTACT ──────────────────────────────────────── */
     #contact {
       padding-block: 3rem;
     }
@@ -1132,7 +1160,7 @@
       }
 
       .form-row {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 1fr;
       }
 
       .footer-grid {
@@ -1176,6 +1204,10 @@
 
       .footer-grid {
         grid-template-columns: 2fr 1fr 1fr 1fr;
+      }
+      
+      .form-row {
+        grid-template-columns: repeat(2, 1fr);
       }
     }
 
